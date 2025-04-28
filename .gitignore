@@ -20,7 +20,7 @@ Thumbs.db
 
 # Ignore HubSpot config
 hubspot.config.yml
-
+application.properties
 # Ignore environment files
 .env
 application-local.properties
