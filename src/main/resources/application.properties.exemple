@@ -4,10 +4,14 @@ hubspot.clientSecret=SEU_CLIENT_SECRET
 hubspot.redirectUri=http://localhost:8080/auth/callback
 hubspot.webhook.secret=SEU_WEBHOOK_SECRET
 
+
 # Configuração padrão do Spring Boot
-# server.port=8080
+server.port=8080
 spring.application.name=meetime-hubspot-integration
 
 # (Opcional) Configurações de log
 logging.level.org.springframework=INFO
 logging.level.com.meetime=DEBUG
+
+# Adicionado conforme application.yml
+hubspot.apiUrl=https://api.hubapi.com
