@@ -1,0 +1,37 @@
+# Ignore Maven build output
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Ignore temporary files
+*.log
+*.tmp
+*.swp
+*.bak
+
+# Ignore IDE config files
+.idea/
+*.iml
+*.iws
+.vscode/
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore HubSpot config
+hubspot.config.yml
+
+# Ignore environment files
+.env
+application-local.properties
+application-dev.properties
+application-prod.properties
+
+# Ignore Node/npm
+node_modules/
+
+# Ignore Java class files
+*.class
+*.jar
+*.war
+*.ear
