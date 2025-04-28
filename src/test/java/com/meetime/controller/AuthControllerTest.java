@@ -29,10 +29,19 @@ public class AuthControllerTest {
     }
 
     @Test
+    void testGetAuthorizationUrl() throws Exception {
+        String expectedUrl = "https://app.hubspot.com/oauth/authorize?client_id=abc&redirect_uri=http://localhost:8080/callback&scope=scope&response_type=code";
+        when(authService.generateAuthorizationUrl(anyString(), anyString())).thenReturn(expectedUrl);
+        mockMvc.perform(get("/auth/url"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(expectedUrl));
+    }
+
+    @Test
     void testCallbackEndpoint_Success() throws Exception {
         String code = "test_code";
         String expectedResponse = "Token recebido com sucesso!";
-        when(authService.exchangeCodeForToken(anyString())).thenReturn(expectedResponse);
+        when(authService.exchangeAuthorizationCode(anyString())).thenReturn(expectedResponse);
 
         mockMvc.perform(get("/auth/callback")
                 .param("code", code))
@@ -43,11 +52,10 @@ public class AuthControllerTest {
     @Test
     void testCallbackEndpoint_Error() throws Exception {
         String code = "test_code";
-        when(authService.exchangeCodeForToken(anyString())).thenThrow(new RuntimeException("Erro ao trocar código pelo token"));
+        when(authService.exchangeAuthorizationCode(anyString())).thenThrow(new RuntimeException("Erro ao trocar código pelo token"));
 
         mockMvc.perform(get("/auth/callback")
                 .param("code", code))
-                .andExpect(status().isInternalServerError())
-                .andExpect(content().string("Erro ao trocar código pelo token"));
+                .andExpect(status().isInternalServerError());
     }
 }

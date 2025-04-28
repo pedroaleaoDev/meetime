@@ -46,7 +46,7 @@ public class ContactControllerTest {
         dto.setPhone("11999999999");
 
         when(contactService.createContact(any(ContactRequestDTO.class), anyString()))
-                .thenReturn(ResponseEntity.status(201).body(dto));
+                .thenReturn(ResponseEntity.status(201).body("{\"email\":\"email@teste.com\"}"));
 
         mockMvc.perform(post("/contacts/contact")
                 .header("Authorization", bearerToken)
@@ -82,8 +82,8 @@ public class ContactControllerTest {
         contactsRequestDTO.setContacts(Arrays.asList(dto1, dto2));
 
         when(contactService.createContact(any(ContactRequestDTO.class), anyString()))
-                .thenReturn(ResponseEntity.status(201).body(dto1))
-                .thenReturn(ResponseEntity.status(201).body(dto2));
+                .thenReturn(ResponseEntity.status(201).body("{\"email\":\"email1@teste.com\"}"))
+                .thenReturn(ResponseEntity.status(201).body("{\"email\":\"email2@teste.com\"}"));
 
         mockMvc.perform(post("/contacts")
                 .header("Authorization", bearerToken)

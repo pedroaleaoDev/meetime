@@ -28,22 +28,19 @@ public class AuthServiceTest {
     }
 
     @Test
-    void testExchangeCodeForToken_Success() {
-        // Simulação básica: depende da implementação real do AuthService
-        // Aqui apenas verifica se não lança exceção e retorna algo
+    void testExchangeAuthorizationCode_Success() {
         String code = "test_code";
-        // Dependendo da implementação, você pode precisar mockar WebClient
+        // O método real faz chamada HTTP, aqui só testamos se não lança exceção
         assertDoesNotThrow(() -> {
-            String result = authService.exchangeCodeForToken(code);
-            // O resultado depende do que o método retorna
+            String result = authService.exchangeAuthorizationCode(code);
         });
     }
 
     @Test
-    void testExchangeCodeForToken_Error() {
+    void testExchangeAuthorizationCode_Error() {
         String code = null;
         assertThrows(Exception.class, () -> {
-            authService.exchangeCodeForToken(code);
+            authService.exchangeAuthorizationCode(code);
         });
     }
 }
