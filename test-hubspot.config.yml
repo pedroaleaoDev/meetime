@@ -1,0 +1,10 @@
+defaultPortal: test-portal
+portals:
+  - name: Test Portal
+    portalId: 123456
+    env: test
+    authType: oauth
+    auth:
+      tokenInfo:
+        accessToken: test-token
+        expiresAt: 999999999
