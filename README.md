@@ -12,36 +12,66 @@ Este projeto implementa integração com a API do HubSpot utilizando OAuth 2.0, 
 🔧 Tecnologias Utilizadas
 
 Java 17+
-
 Spring Boot
-
 Spring Web
-
 Spring Validation
-
 WebClient (Spring Reactive)
-
 Lombok
-
 Jackson (JSON)
 
 ⚙️ Como Executar o Projeto
 
 Pré-requisitos
-
 Java 17 ou superior
-
 Maven
-
 Conta de Desenvolvedor HubSpot
-
 Passos
-
 Clone o repositório:
 
 
 
 git clone https://github.com/seu-usuario/meetime-hubspot-integration.git
+
+🚩 Primeiros Passos: Configuração do Ambiente HubSpot CLI
+Os aplicativos do HubSpot usam JavaScript. Node.js é um ambiente de servidor de tempo de execução que executa JavaScript. npm é um gerenciador de pacotes JavaScript que funciona com Node. Recomendamos usar um gerenciador de pacotes como o Homebrew para instalar o Node.js (ou baixe em https://nodejs.org/)..)
+
+O HubSpot CLI permite que você conecte suas ferramentas de desenvolvimento local ao HubSpot. Instale-o executando:
+
+bash
+CopyInsert in Terminal
+npm install -g @hubspot/cli@latest
+No terminal, execute a inicialização:
+
+bash
+CopyInsert in Terminal
+hs init --account=SEU_ID_DA_CONTA
+Substitua SEU_ID_DA_CONTA pelo seu ID de conta HubSpot (exemplo: 49701241).
+
+Siga as instruções para criar uma chave de acesso pessoal. Isso é necessário para que a CLI possa interagir com sua conta da HubSpot:
+
+Você será redirecionado ao HubSpot em seu navegador web.
+Gere sua chave de acesso pessoal e, em seguida, copie e cole sua chave no terminal.
+Forneça um nome para a conta que você está conectando para referência ao usar a CLI. Isso criará automaticamente seu arquivo de configuração (hubspot.config.yml) e definirá a conta como padrão.
+Dicas de comandos úteis:
+
+Execute hs auth para conectar outra conta à CLI.
+Execute hs accounts para alternar entre contas e selecionar outra conta para usar como padrão.
+Execute o comando hs auth e siga o prompt no seu terminal para gerar uma chave de acesso pessoal na sua conta de desenvolvedor. Copie-a de volta para o seu terminal para autenticar a conta.
+🔗 Como Ajustar a URL de Redirecionamento no HubSpot
+Antes de executar o fluxo de autenticação, é necessário configurar a URL de redirecionamento no painel de desenvolvedor da HubSpot:
+
+Acesse: https://app.hubspot.com/developer
+Entre na seção de aplicativos (Apps).
+Preencha as informações necessárias do seu aplicativo.
+Acesse a aba "Autenticação".
+Em "URLs de redirecionamento", adicione:
+CopyInsert
+http://localhost:8080/auth/callback
+Essa configuração é obrigatória para que o fluxo OAuth2 funcione corretamente após executar o projeto.
+
+
+
+
 
 2. Entre no diretório:
    ```bash
