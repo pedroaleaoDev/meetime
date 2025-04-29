@@ -45,7 +45,7 @@ No terminal, execute a inicialização:
 bash
 CopyInsert in Terminal
 hs init --account=SEU_ID_DA_CONTA
-Substitua SEU_ID_DA_CONTA pelo seu ID de conta HubSpot (exemplo: 49701241).
+Substitua SEU_ID_DA_CONTA pelo seu ID de conta HubSpot (exemplo: 497xx241).
 
 Siga as instruções para criar uma chave de acesso pessoal. Isso é necessário para que a CLI possa interagir com sua conta da HubSpot:
 
@@ -69,23 +69,16 @@ CopyInsert
 http://localhost:8080/auth/callback
 Essa configuração é obrigatória para que o fluxo OAuth2 funcione corretamente após executar o projeto.
 
-
-
-
-
-2. Entre no diretório:
-   ```bash
-cd meetime-hubspot-integration
-
-Configure as variáveis no application.properties:
-
-
+2.Configure as variáveis no application.properties:
 
 server.port=8080 hubspot.clientId=SEU_CLIENT_ID hubspot.clientSecret=SEU_CLIENT_SECRET hubspot.redirectUri=http://localhost:8080/auth/callback hubspot.webhook.secret=SEU_WEBHOOK_SECRET
 
-4. Compile e execute:
+1. Compile e execute:
    ```bash
 mvn spring-boot:run
+
+
+5. Acesse http://localhost:8080/swagger-ui/index.html
 
 📝 Observações Importantes
 
@@ -94,20 +87,6 @@ As variáveis do application.properties devem ser preenchidas com os valores da 
 📚 Referências
 
 Documentação da API HubSpot
-
-🔎 
-
-🚀 Entrega
-
-[]Envie o link do repositório GitHub para:
-
-[]thais.dias@meetime.com.br
-
-[]joao@meetime.com.br
-
-[]william.willers@meetime.com.br
-
-[]victor@meetime.com.br
 
 Título do e-mail: "Processo Seletivo Meetime - Case Técnico"
 
@@ -130,13 +109,6 @@ HubSpot CLI Docs
 - Implementado e funcional (realiza troca pelo `access_token` e `refresh_token`).
 
 ### O que ainda falta implementar:
-
-| Tarefa                                                        | Status  | Observação                                                                                   |
-|---------------------------------------------------------------|---------|---------------------------------------------------------------------------------------------|
-| 3. Criar camada de serviço para criar Contato no CRM HubSpot   | ✅ Feito e testado | Endpoint POST `/contacts/contact` (cria contato individual) e POST `/contacts` (cria múltiplos). Requer Bearer Token. |
-| 4. Criar camada de serviço para receber Webhook de Criação de Contato  | 🔲 Não feito ainda | Não implementado neste projeto. |
-
----
 
 📋 O que fazer:
 
