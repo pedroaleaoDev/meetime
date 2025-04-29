@@ -170,36 +170,36 @@ O token de acesso OAuth2 da HubSpot expira em aproximadamente 6 horas após ser 
 
 ### Endpoints Obrigatórios
 
-- [ ] **Geração da Authorization URL**  
+- [X] **Geração da Authorization URL**  
   Endpoint que retorna a URL de autorização para iniciar o fluxo OAuth com o HubSpot.
 
-- [ ] **Processamento do Callback OAuth**  
+- [X] **Processamento do Callback OAuth**  
   Endpoint que recebe o código de autorização do HubSpot e realiza a troca pelo token de acesso.
 
-- [ ] **Criação de Contatos**  
+- [X] **Criação de Contatos**  
   Endpoint para criar um contato no CRM via API do HubSpot, respeitando as políticas de rate limit.
 
-- [ ] **Recebimento de Webhook para Criação de Contatos**  
+- [X] **Recebimento de Webhook para Criação de Contatos**  
   Endpoint que escuta/processa eventos do tipo "contact.creation" enviados pelo webhook do HubSpot.
 
 ---
 
 ### Requisitos Técnicos
 
-- [ ] API REST desenvolvida em Java usando Spring Boot (ou Play Framework).
-- [ ] Boas práticas de segurança, conforme recomendações da documentação do HubSpot.
-- [ ] Boas práticas de código: separação de responsabilidades, tratamento de erros, estrutura clara.
-- [ ] README.md com instruções detalhadas para execução do projeto.
-- [ ] Documentação técnica explicando decisões, motivação para uso de libs e possíveis melhorias futuras.
+- [X] API REST desenvolvida em Java usando Spring Boot (ou Play Framework).
+- [X] Boas práticas de segurança, conforme recomendações da documentação do HubSpot.
+- [X] Boas práticas de código: separação de responsabilidades, tratamento de erros, estrutura clara.
+- [X] README.md com instruções detalhadas para execução do projeto.
+- [X] Documentação técnica explicando decisões, motivação para uso de libs e possíveis melhorias futuras.
 
 ---
 
 ### Entregáveis
 
-- [ ] Código-fonte disponível em repositório GitHub.
-- [ ] README.md com instruções detalhadas.
-- [ ] Documentação técnica (pode estar no README, explicando decisões e possíveis melhorias).
-- [ ] E-mail enviado com o link do repositório para:  
+- [X] Código-fonte disponível em repositório GitHub.
+- [X] README.md com instruções detalhadas.
+- [X] Documentação técnica (pode estar no README, explicando decisões e possíveis melhorias).
+- [] E-mail enviado com o link do repositório para:  
   - thais.dias@meetime.com.br  
   - joao@meetime.com.br  
   - william.willers@meetime.com.br  
@@ -210,9 +210,9 @@ O token de acesso OAuth2 da HubSpot expira em aproximadamente 6 horas após ser 
 
 ### Observações
 
-- [ ] Todas as bibliotecas/libs utilizadas estão descritas e justificadas no README.md.
-- [ ] O projeto pode ser executado seguindo as instruções fornecidas.
-- [ ] Possíveis melhorias futuras estão listadas/documentadas.
+- [X] Todas as bibliotecas/libs utilizadas estão descritas e justificadas no README.md.
+- [X] O projeto pode ser executado seguindo as instruções fornecidas.
+- [X] Possíveis melhorias futuras estão listadas/documentadas.
 
 ---
 
