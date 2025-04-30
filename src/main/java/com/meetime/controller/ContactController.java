@@ -53,7 +53,31 @@ public class ContactController {
     // Buscar contatos por filtro (ex: email, nome)
     @Operation(
         summary = "Busca contatos por filtro no HubSpot",
-        description = "Requer Bearer Token OAuth2. Permite buscar contatos por filtros como email, nome, etc."
+        description = "Requer Bearer Token OAuth2. Permite buscar contatos por filtros como email, nome, etc. O corpo da requisição deve seguir o formato de pesquisa da API HubSpot CRM v3.\n\n" +
+                "Exemplo de corpo para buscar por email:\n" +
+                "```json\n" +
+                "{\n" +
+                "  \"filterGroups\": [\n" +
+                "    {\n" +
+                "      \"filters\": [\n" +
+                "        {\n" +
+                "          \"propertyName\": \"email\",\n" +
+                "          \"operator\": \"EQ\",\n" +
+                "          \"value\": \"exemplo@email.com\"\n" +
+                "        }\n" +
+                "      ]\n" +
+                "    }\n" +
+                "  ],\n" +
+                "  \"sorts\": [\n" +
+                "    {\n" +
+                "      \"propertyName\": \"createdate\",\n" +
+                "      \"direction\": \"DESCENDING\"\n" +
+                "    }\n" +
+                "  ],\n" +
+                "  \"limit\": 10\n" +
+                "}\n" +
+                "```\n\n" +
+                "Operadores disponíveis: EQ (igual), NEQ (diferente), LT (menor que), LTE (menor ou igual), GT (maior que), GTE (maior ou igual), BETWEEN, IN, NOT_IN, HAS_PROPERTY, NOT_HAS_PROPERTY, CONTAINS_TOKEN, NOT_CONTAINS_TOKEN."
     )
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Contatos encontrados"),
