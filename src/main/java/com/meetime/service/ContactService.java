@@ -4,6 +4,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import com.meetime.dto.ContactRequestDTO;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class ContactService {
@@ -96,6 +100,30 @@ public class ContactService {
             return ResponseEntity.ok(response.getBody());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao atualizar contato: " + e.getMessage());
+        }
+    }
+
+    // Cria um contato individual no HubSpot
+    public ResponseEntity<?> createContact(ContactRequestDTO dto, String accessToken) {
+        String url = hubspotApiUrl + "/crm/v3/objects/contacts";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(accessToken);
+        // Monta o payload no formato esperado pela HubSpot
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("email", dto.getEmail());
+        properties.put("firstname", dto.getFirstname());
+        properties.put("lastname", dto.getLastname());
+        properties.put("phone", dto.getPhone());
+        Map<String, Object> body = new HashMap<>();
+        body.put("properties", properties);
+        HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
+        try {
+            ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
+            return ResponseEntity.status(response.getStatusCode()).body(response.getBody());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erro ao criar contato: " + e.getMessage());
         }
     }
 }
