@@ -1,9 +1,17 @@
 package com.meetime.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class ContactRequestDTO {
+    @NotBlank(message = "O email é obrigatório")
+    @Email(message = "Formato de email inválido")
     private String email;
+    @NotBlank(message = "O primeiro nome é obrigatório")
     private String firstname;
+    @NotBlank(message = "O sobrenome é obrigatório")
     private String lastname;
+    @NotBlank(message = "O telefone é obrigatório")
     private String phone;
 
     public String getEmail() {
