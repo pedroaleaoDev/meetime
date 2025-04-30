@@ -14,7 +14,7 @@ import com.meetime.service.ContactService;
 import com.meetime.dto.ContactsRequestDTO;
 import com.meetime.dto.ContactRequestDTO;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -190,7 +190,11 @@ public class ContactController {
         for (ContactRequestDTO contactDTO : dto.getContacts()) {
             logger.info("Enviando contato individual: {}", contactDTO);
             ResponseEntity<?> response = contactService.createContact(contactDTO, bearerToken);
-            results.add(response.getBody());
+            var result = new java.util.HashMap<String, Object>();
+            result.put("contact", contactDTO);
+            result.put("status", response.getStatusCode().value());
+            result.put("body", response.getBody());
+            results.add(result);
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(results);
     }

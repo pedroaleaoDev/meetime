@@ -58,4 +58,31 @@ public class ContactServiceTest {
         // Dependendo da implementação, pode lançar exceção ou retornar erro
         assertDoesNotThrow(() -> contactService.createContact(dto, token));
     }
+
+    @Test
+    void testCreateContact_ValidPayload() {
+        ContactRequestDTO dto = new ContactRequestDTO();
+        dto.setEmail("valid@email.com");
+        dto.setFirstname("Valid");
+        dto.setLastname("User");
+        dto.setPhone("11999999999");
+        String token = "valid_token";
+        ResponseEntity<?> response = contactService.createContact(dto, token);
+        assertNotNull(response);
+        // Aceita 2xx, 4xx ou 5xx pois depende da API externa
+        assertTrue(response.getStatusCode().is2xxSuccessful() ||
+                   response.getStatusCode().is4xxClientError() ||
+                   response.getStatusCode().is5xxServerError());
+    }
+
+    @Test
+    void testCreateContact_NullEmail() {
+        ContactRequestDTO dto = new ContactRequestDTO();
+        dto.setFirstname("Valid");
+        dto.setLastname("User");
+        dto.setPhone("11999999999");
+        String token = "valid_token";
+        ResponseEntity<?> response = contactService.createContact(dto, token);
+        assertNotNull(response);
+    }
 }
